@@ -19,5 +19,5 @@
 5. 各種json檔(for YY_app回覆訊息用)自行參閱
 
 ## 攝影機
-- 型號：
-- 高度確認：55cm
+- 型號：Logitech 羅技 C525 HD 網路視訊攝影機 https://www.eclife.com.tw/SSD/moreinfo_46585.htm
+- 拍攝高度確認：55cm
