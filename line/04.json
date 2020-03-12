@@ -1,0 +1,89 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "發芽率ver1",
+  "chatBarText": "查看更多資訊",
+  "areas": [
+    {
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 827,
+        "height": 837
+      },
+      "action": {
+        "type": "postback",
+        "text": "檢視報表",
+        "data": "start=table1"
+      }
+    },
+    {
+      "bounds": {
+        "x": 837,
+        "y": 0,
+        "width": 827,
+        "height": 837
+      },
+      "action": {
+        "type": "postback",
+        "text": "辨識發芽率",
+        "data": "start=ger1"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1673,
+        "y": 0,
+        "width": 827,
+        "height": 837
+      },
+      "action": {
+        "type": "postback",
+        "text": "人工判別",
+        "data": "start=human1"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1673,
+        "y": 849,
+        "width": 827,
+        "height": 837
+      },
+      "action": {
+        "type": "postback",
+        "text": "權限檢視",
+        "data": "start=power1"
+      }
+    },
+    {
+      "bounds": {
+        "x": 842,
+        "y": 849,
+        "width": 827,
+        "height": 837
+      },
+      "action": {
+        "type": "postback",
+        "text": "問題回饋",
+        "data": "start=problem1"
+      }
+    },
+    {
+      "bounds": {
+        "x": 0,
+        "y": 849,
+        "width": 827,
+        "height": 837
+      },
+      "action": {
+        "type": "postback",
+        "text": "新增品種",
+        "data": "start=add1"
+      }
+    }
+  ]
+}

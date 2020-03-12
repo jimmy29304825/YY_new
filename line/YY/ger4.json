@@ -1,0 +1,22 @@
+[{
+  "type": "template",
+  "altText": "this is a confirm template",
+  "template": {
+    "type": "confirm",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "確定",
+        "text": "確定",
+        "data": "ger=confirm=ger5"
+      },
+      {
+        "type": "postback",
+        "label": "重新輸入",
+        "text": "重新輸入",
+        "data": "ger=retype=ger5a"
+      }
+    ],
+    "text": "輸入批號為：2020022601"
+  }
+}]

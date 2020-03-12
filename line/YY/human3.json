@@ -1,0 +1,23 @@
+[{
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "發芽",
+        "text": "發芽",
+        "data": "human=check=yes"
+      },
+      {
+        "type": "postback",
+        "label": "未發芽",
+        "text": "未發芽",
+        "data": "human=check=no"
+      }
+    ],
+    "title": "品種：芝麻葉(3G1)",
+    "text": "(1/10)請問上圖幼苗是否發芽?"
+  }
+}]

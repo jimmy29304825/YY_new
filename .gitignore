@@ -1,0 +1,4 @@
+# 檔案名稱 .gitignore
+
+# 忽略 line_secret_key 檔案
+line/line_secret_key

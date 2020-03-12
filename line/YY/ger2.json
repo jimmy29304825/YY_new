@@ -1,0 +1,20 @@
+[{
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "datetimepicker",
+        "label": "選擇日期",
+        "data": "ger=selectDate=ger3",
+        "mode": "date",
+        "initial": "2020-02-26",
+        "max": "2032-12-31",
+        "min": "2019-02-26"
+      }
+    ],
+    "title": "播種日期",
+    "text": "辨識作物：芝麻葉(3G1)"
+  }
+}]

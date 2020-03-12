@@ -1,0 +1,141 @@
+[{
+  "type": "template",
+  "altText": "選擇辨識作物(請在手機操作)",
+  "template": {
+    "type": "carousel",
+    "actions": [],
+    "columns": [
+      {
+        "thumbnailImageUrl": "https://image-cdn-flare.qdm.cloud/q6bb8545ec4d1a/image/cache/data/2019/10/29/f837d79e102b45a95915c9649eb7d7d1-max-w-1024.jpg",
+        "title": "芝麻葉",
+        "text": "3G1",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "芝麻葉(3G1)",
+            "data": "ger=getdate=3g1"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://y1.yooho.com.tw/images/201608/goods_img/1682_G_1470078288189.jpg",
+        "title": "綠火焰",
+        "text": "1G1",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "綠火焰(1G1)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://www.superbuy.com.tw/superbuy_admin/upload/images/0S7A2852.jpg",
+        "title": "羅蔓",
+        "text": "1G7",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "羅蔓(1G7)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://www.artsomegroups.com/wp-content/uploads/2016/03/v14-1羽衣甘藍.jpg",
+        "title": "羽衣甘藍",
+        "text": "2GD",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "羽衣甘藍(2GD)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://shoplineimg.com/5756526be37ec6ab5e000158/5ad2d8c959d52418b5000361/750x.jpg?",
+        "title": "紅寶石萵苣",
+        "text": "1RB",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "紅寶石萵苣(1RB)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://ct.yimg.com/xd/api/res/1.2/3Ny6MXT7YPxMz_2pAlEoIA--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD0yNzk7cT04NTtyb3RhdGU9YXV0bzt3PTM3MA--/https://s.yimg.com/ob/image/546d1ea3-871c-4d37-899d-fd2ccd8aa3c5.jpg",
+        "title": "紅蘿蔓",
+        "text": "1R7",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "紅蘿蔓(1R7)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://www.coir.url.tw/images/products/OS083s.jpg",
+        "title": "奶油波士頓",
+        "text": "1G4",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "奶油波士頓(1G4)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://pic.pimg.tw/forcesofnature/1445931692-857707950.jpg",
+        "title": "羅勒",
+        "text": "3G2",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "羅勒(3G2)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://img14.360buyimg.com/n1/jfs/t13783/319/1236665218/301479/1cc634fe/5a1d2ba2N238bb222.jpg",
+        "title": "芝麻葉",
+        "text": "4G5",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "芝麻葉(4G5)",
+            "data": "getdate:"
+          }
+        ]
+      },
+      {
+        "thumbnailImageUrl": "https://images.assetsdelivery.com/compings_v2/stanislavpalamar/stanislavpalamar1807/stanislavpalamar180700022.jpg",
+        "title": "更多",
+        "text": "查看更多作物",
+        "actions": [
+          {
+            "type": "postback",
+            "label": "選擇",
+            "text": "其他作物",
+            "data": "more"
+
+          }
+        ]
+      }
+    ]
+  }
+}]

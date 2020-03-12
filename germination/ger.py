@@ -5,17 +5,18 @@ import datetime  # 日期時間紀錄
 
 
 class germination():
-    def __init__(self, ID, sowDate):
+    def __init__(self, ID, sowDate, filename, thershold, percent):
         self.ID = ID  # 手動輸入品種編號
         self.sowDate = datetime.datetime.strptime(sowDate, '%Y/%m/%d').date()  # 手動輸入播種日期
         self.dateTime = datetime.datetime.now().date()  # 紀錄拍攝時間
         self.days = (self.dateTime - self.sowDate).days  # 紀錄培育時長
-        self.thershold = 170  # 從SQL抓取二元化參數
-        self.percent = 0.2  # 從SQL抓取判斷閾值
+        self.thershold = thershold  # 從SQL抓取二元化參數
+        self.percent = percent  # 從SQL抓取判斷閾值
         self.result_list = []  #預設結果儲存物件
+        self.filename = filename
         
         
-    def convert_photo(self, slice_img):  # 圖片轉換(灰階、高斯模糊、二元化)，計算發芽比例
+    def convert_photo(self, slice_img):  # 圖片換(灰階、高斯模糊、二元化)，計算發芽比例
         kernel_size = (3, 3)  # 高斯模糊矩陣大小
         sigma = 3  # 高斯模糊標準差參數(0=自動)
         grayImage = cv2.cvtColor(slice_img, cv2.COLOR_BGR2GRAY)  # gray(0-255) 圖像轉換灰階
@@ -40,9 +41,9 @@ class germination():
     
     def get_photo(self):  # 拍攝照片並轉換、計算、裁切
         print('拍攝照片...')
-        fileName = "convert_rect2.jpg"  # 暫時抓本地端照片
-        fileDirs = './'  # 資料夾位置
-        img = cv2.imread(fileDirs+fileName)  #載入照片（之後換成控制CAM拍攝照片)
+#         fileName = "3G1_rect1.jpg"  # 暫時抓本地端照片
+#         fileDirs = './'  # 資料夾位置
+        img = cv2.imread(self.filename)  #載入照片（之後換成控制CAM拍攝照片)
         self.result_list = []  # 重製結果暫存清單
         print('裁切照片')
         top = 0  # 最上面(+h)

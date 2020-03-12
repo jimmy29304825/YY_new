@@ -1,0 +1,23 @@
+[{
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "拍照",
+        "text": "拍照",
+        "data": "ger=shot=ger6"
+      },
+      {
+        "type": "postback",
+        "label": "取消拍攝",
+        "text": "取消拍攝",
+        "data": "ger=cancel=ger6a"
+      }
+    ],
+    "title": "開始辨識發芽率",
+    "text": "請確認幼苗已擺上就位，補光燈已開"
+  }
+}]
