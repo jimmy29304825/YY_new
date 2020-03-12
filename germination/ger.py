@@ -1,7 +1,5 @@
 import cv2  # 影像處理ML
 import numpy as np  # 數學計算用
-# from matplotlib import pyplot as plt  # 繪圖
-# %matplotlib inline  # 繪圖結果要在notebook顯示時須加上
 import time  # 時間紀錄
 import datetime  # 日期時間紀錄
 
@@ -36,20 +34,20 @@ class germination():
         germination_sum = 0
         for i in self.result_list:
             germination_sum += i[3]
-        germination_rate = round((germination_sum / (16*24))*100, 2)
+        germination_rate = round((germination_sum / (13*22))*100, 2)
         return germination_rate
        
     
     def get_photo(self):  # 拍攝照片並轉換、計算、裁切
         print('拍攝照片...')
-        fileName = "convert_rect1.jpg"
-        fileDirs = './data/'
+        fileName = "convert_rect2.jpg"  # 暫時抓本地端照片
+        fileDirs = './'  # 資料夾位置
         img = cv2.imread(fileDirs+fileName)  #載入照片（之後換成控制CAM拍攝照片)
         self.result_list = []  # 重製結果暫存清單
         print('裁切照片')
         top = 0  # 最上面(+h)
         left = 0  # 最左邊(+w)
-        plus = 50
+        plus = 100  # 長寬設定 100 * 100
         for i in range(13):  # 等比例裁切每一株的照片
             for j in range(22):
                 slice_img = img[top:top+plus, left:left+plus]
