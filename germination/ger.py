@@ -22,7 +22,8 @@ class germination():
         grayImage = cv2.cvtColor(slice_img, cv2.COLOR_BGR2GRAY)  # gray(0-255) 圖像轉換灰階
 #         grayImage = cv2.GaussianBlur(grayImage, kernel_size, sigma)  # GaussianBlur  圖校進行模糊化(高斯)
         (thresh, blackAndWhiteImage) = cv2.threshold(grayImage,  self.thershold, 255, cv2.THRESH_BINARY)  # black and white(0, 255)  圖像透過thershold閾值進行二元化 
-        slice_percent =  round(sum(sum(blackAndWhiteImage == 0))/100, 2)  # 計算黑色比例(作物占比)
+        caculateImg = blackAndWhiteImage[10:90, 10:90]  # 邊緣10%不計算發芽率
+        slice_percent =  round(sum(sum(caculateImg == 0))/64, 2)  # 計算黑色比例(作物占比)
         if slice_percent >= self.percent:  # 判斷是否發芽
             is_germination = 1
         else: 
@@ -35,7 +36,7 @@ class germination():
         germination_sum = 0
         for i in self.result_list:
             germination_sum += i[3]
-        germination_rate = round((germination_sum / (13*22))*100, 2)
+        germination_rate = round((germination_sum / (14*22))*100, 2)
         return germination_rate
        
     
@@ -49,11 +50,11 @@ class germination():
         top = 0  # 最上面(+h)
         left = 0  # 最左邊(+w)
         plus = 100  # 長寬設定 100 * 100
-        for i in range(13):  # 等比例裁切每一株的照片
+        for i in range(14):  # 等比例裁切每一株的照片
             for j in range(22):
                 slice_img = img[top:top+plus, left:left+plus]
                 ans = self.convert_photo(slice_img)  # 使用convert_photo運算
-                result = [i, j, ans[0], ans[1]]  # 儲存單個結果
+                result = [i, j, ans[0], ans[1],slice_img]  # 儲存單個結果
                 self.result_list.append(result)  # 彙整整片結果至暫存清單
                 left = left + plus
             top = top +plus
