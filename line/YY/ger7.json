@@ -1,4 +1,24 @@
 [{
-  "type": "text",
-  "text": "共拍攝3組幼苗\n品種：芝麻葉(3G1)\n發芽率：[96.7%]\n辨識數量：1152株\n未發芽：38株\n所有數據均已儲存!!"
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "postback",
+        "label": "拍下一張",
+        "text": "拍下一張",
+        "data": "ger=shot=loop"
+      },
+      {
+        "type": "postback",
+        "label": "結束拍攝",
+        "text": "結束拍攝",
+        "data": "ger=stop=ger7"
+      }
+    ],
+    "thumbnailImageUrl": "https://scontent.ftpe3-1.fna.fbcdn.net/v/t1.0-9/88039602_2951875061538233_832873018588921856_o.jpg?_nc_cat=111&_nc_sid=8024bb&_nc_ohc=HziRsPfF270AX9IN3Ix&_nc_ht=scontent.ftpe3-1.fna&oh=be12b7aea143033c44bd1e2c337e4446&oe=5EEE545E",
+    "title": "辨識完成，發芽率 [ 92% ]",
+    "text": "未發芽15株；發芽369株"
+  }
 }]
