@@ -1,7 +1,7 @@
 [{
   "type": "image",
-  "originalContentUrl": "https://c21f399c.ngrok.io/python/factory/test/YY_new/line/YY/test.jpg",
-  "previewImageUrl": "https://c21f399c.ngrok.io/python/factory/test/YY_new/line/YY/test.jpg",
+  "originalContentUrl": "https://8a479fed.ngrok.io/python/factory/test/YY_new/line/YY/test.jpg",
+  "previewImageUrl": "https://8a479fed.ngrok.io/python/factory/test/YY_new/line/YY/test.jpg",
   "animated": false
 },{
   "type": "template",
@@ -19,7 +19,7 @@
         "type": "postback",
         "label": "重拍",
         "text": "重拍",
-        "data": "ger=retake=no"
+        "data": "ger=shot=no"
       }
     ],
     "title": "成像確認",
