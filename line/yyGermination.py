@@ -2,8 +2,7 @@ import pymysql
 import cv2
 import numpy as np
 import paramiko
-import time
-import datetime
+from datetime import datetime
 from imutils.perspective import four_point_transform
 
 class connect():
@@ -142,6 +141,40 @@ class connect():
         finally:
             db.close()
         return process_result
+    
+    def artificial_identify(self, series_id):
+        try:
+            db, cursor = self.connect_DB()
+            cursor.execute('''select d.sponge_id, d.image, a.series_id, a.germination_percent, b.process_id, 
+                                     c.germination_id, d.plant_percent, abs(d.plant_percent - a.germination_percent) as `range`
+                                from yyostech.series_data a
+                                inner join yyostech.process_record b on b.series_id = a.series_id
+                                inner join yyostech.germination_record c on b.process_id = c.process_id
+                                inner join yyostech.sponge_record d on d.germination_id = c.germination_id
+                                left join yyostech.artificial_identify e on d.sponge_id = e.sponge_id
+                                where a.series_id = %s
+                                and e.sponge_id is null
+                                order by 7 
+                                limit 10;'''% repr(series_id))
+            artificial_result = cursor.fetchall()
+        finally:
+            db.close()
+        return artificial_result
+    
+    
+    def save_artificial_result(series_id, line_id, artificial_result):
+        try:
+            db, cursor = self.connect_DB()
+            
+            sql_sponge = """INSERT INTO artificial_identify (sponge_id, line_id, is_germination, identify_date) 
+                                        VALUES(%s, %s, %s, %s);"""
+            for i in artificial_result:
+                artificial_tuple = (i[0], line_id, i[1], str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                cursor.execute(sql_sponge, artificial_tuple)
+            result = db.commit()
+        finally:
+            db.close()
+        return result
     
     
 class par():
