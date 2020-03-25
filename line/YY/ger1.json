@@ -110,19 +110,6 @@
         ]
       },
       {
-        "thumbnailImageUrl": "https://img14.360buyimg.com/n1/jfs/t13783/319/1236665218/301479/1cc634fe/5a1d2ba2N238bb222.jpg",
-        "title": "芝麻葉",
-        "text": "4G5",
-        "actions": [
-          {
-            "type": "postback",
-            "label": "選擇",
-            "text": "芝麻葉(4G5)",
-            "data": "getdate:"
-          }
-        ]
-      },
-      {
         "thumbnailImageUrl": "https://images.assetsdelivery.com/compings_v2/stanislavpalamar/stanislavpalamar1807/stanislavpalamar180700022.jpg",
         "title": "更多",
         "text": "查看更多作物",
