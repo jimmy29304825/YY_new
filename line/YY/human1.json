@@ -1,6 +1,6 @@
 [{
   "type": "template",
-  "altText": "this is a carousel template",
+  "altText": "選擇辨識作物(請在手機操作)",
   "template": {
     "type": "carousel",
     "actions": [],
@@ -13,8 +13,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷芝麻葉(3G1)",
-            "data": "human=species=3G1"
+            "text": "芝麻葉(3G1)",
+            "data": "ger=getdate=3g1"
           }
         ]
       },
@@ -26,8 +26,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷綠火焰(1G1)",
-            "data": "human=species=1G1"
+            "text": "綠火焰(1G1)",
+            "data": "getdate:"
           }
         ]
       },
@@ -39,8 +39,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷羅蔓(1G7)",
-            "data": "human=species=1G7"
+            "text": "羅蔓(1G7)",
+            "data": "getdate:"
           }
         ]
       },
@@ -52,8 +52,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷羽衣甘藍(2GD)",
-            "data": "human=species=2GD"
+            "text": "羽衣甘藍(2GD)",
+            "data": "getdate:"
           }
         ]
       },
@@ -65,8 +65,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷紅寶石萵苣(1RB)",
-            "data": "human=species=1RB"
+            "text": "紅寶石萵苣(1RB)",
+            "data": "getdate:"
           }
         ]
       },
@@ -78,8 +78,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷紅蘿蔓(1R7)",
-            "data": "human=species=1R7"
+            "text": "紅蘿蔓(1R7)",
+            "data": "getdate:"
           }
         ]
       },
@@ -91,8 +91,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷奶油波士頓(1G4)",
-            "data": "human=species=1G4"
+            "text": "奶油波士頓(1G4)",
+            "data": "getdate:"
           }
         ]
       },
@@ -104,21 +104,8 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷羅勒(3G2)",
-            "data": "human=species=3G2"
-          }
-        ]
-      },
-      {
-        "thumbnailImageUrl": "https://img14.360buyimg.com/n1/jfs/t13783/319/1236665218/301479/1cc634fe/5a1d2ba2N238bb222.jpg",
-        "title": "芝麻葉",
-        "text": "4G5",
-        "actions": [
-          {
-            "type": "postback",
-            "label": "選擇",
-            "text": "判斷芝麻葉(4G5)",
-            "data": "human=species=4G5"
+            "text": "羅勒(3G2)",
+            "data": "getdate:"
           }
         ]
       },
@@ -130,8 +117,9 @@
           {
             "type": "postback",
             "label": "選擇",
-            "text": "判斷其他作物",
-            "data": "human=species=more"
+            "text": "其他作物",
+            "data": "more"
+
           }
         ]
       }

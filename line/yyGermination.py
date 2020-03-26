@@ -90,7 +90,7 @@ class connect():
     def get_raspi_data(self, photo_id):
         try:
             db, cursor = self.connect_DB()
-            cursor.execute("SELECT * from raspi_data where photo_id = \'%s\'" % photo_id)
+            cursor.execute("SELECT * from raspi_data where photo_id = %s" % repr(photo_id))
             data = cursor.fetchone()
             frame = data[1]
             nparr = np.fromstring(frame, np.uint8)
@@ -155,22 +155,22 @@ class connect():
                                 where a.series_id = %s
                                 and e.sponge_id is null
                                 order by 7 
-                                limit 10;'''% repr(series_id))
-            artificial_result = cursor.fetchall()
+                                limit 1;'''% repr(series_id))
+            artificial_result = cursor.fetchone()
         finally:
             db.close()
         return artificial_result
     
     
-    def save_artificial_result(series_id, line_id, artificial_result):
+    def save_artificial_result(self, series_id, line_id, artificial_result):
         try:
             db, cursor = self.connect_DB()
             
             sql_sponge = """INSERT INTO artificial_identify (sponge_id, line_id, is_germination, identify_date) 
                                         VALUES(%s, %s, %s, %s);"""
-            for i in artificial_result:
-                artificial_tuple = (i[0], line_id, i[1], str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
-                cursor.execute(sql_sponge, artificial_tuple)
+
+            artificial_tuple = (artificial_result[0], line_id, artificial_result[1], str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+            cursor.execute(sql_sponge, artificial_tuple)
             result = db.commit()
         finally:
             db.close()
@@ -230,6 +230,7 @@ class germination():
     
     
     def resize_photo(self, image):
+        
         four_points = [[125, 815], [393, 1067], [694, 515], [958, 639]]
         rect = four_point_transform(image, np.array(four_points))
         image_convert = cv2.resize(rect,(100*self.xy[0], 100*self.xy[1]))

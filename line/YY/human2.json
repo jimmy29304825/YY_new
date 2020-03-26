@@ -1,7 +1,7 @@
 [{
   "type": "image",
-  "originalContentUrl": "https://b3ef05d0.ngrok.io/python/factory/test/YY_new/line/YY/artificial.jpg",
-  "previewImageUrl": "https://b3ef05d0.ngrok.io/python/factory/test/YY_new/line/YY/artificial.jpg",
+  "originalContentUrl": "https://52e444ab.ngrok.io/python/factory/test/YY_new/line/YY/artificial.jpg",
+  "previewImageUrl": "https://52e444ab.ngrok.io/python/factory/test/YY_new/line/YY/artificial.jpg",
   "animated": false
 },{
   "type": "template",
@@ -23,6 +23,6 @@
       }
     ],
     "title": "品種：%s(%s)",
-    "text": "(%s/10)請問上圖幼苗是否發芽?"
+    "text": "請問上圖幼苗是否發芽?"
   }
 }]
