@@ -1,7 +1,7 @@
 # YY_new
 ## 專案重點：
 1. 樹梅派+相機模組
-2. 資料庫(MySQL 5.0)
+2. 資料庫(MySQL 5.7)
 3. LineBot
 4. OpenCV
 
