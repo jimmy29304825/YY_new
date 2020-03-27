@@ -44,8 +44,10 @@
     * ```get_result(porcess_id)```：抓取整個操作主流程的所有紀錄與成果
     * ```artificial_identify(series_id)```：取得指定品種尚未人工判別過，最接近判斷閾值的數據
     * ```save_artificial_result(series_id, line_id, artificial_result)```：儲存人工判別的結果、操作人、時間等資訊至資料庫
+    
   - ```par(ip, port, username, password)```：遠端對樹莓派下指令的模組
     * ```connect_raspi(photo_id)```：命令樹莓派運行test.py程式檔，執行拍照、儲存等動作，並指定資料編號 = photo_id
+    
   - ```germination(series_id, thershold, percent)```：發芽率辨識模組
     * ```convert_photo(slice_img)```：進行成像轉換(灰階、高斯模糊、二元化)
     * ```caculate()```：計算每個海綿的發芽數量與整體比例
