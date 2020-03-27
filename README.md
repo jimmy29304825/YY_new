@@ -25,3 +25,12 @@
 ## 攝影機
 - 型號：Logitech 羅技 C525 HD 網路視訊攝影機 https://www.eclife.com.tw/SSD/moreinfo_46585.htm
 - 拍攝高度確認：55cm
+
+
+## 主程式介紹
+1. YY_app.ipynb：linebot運行主檔
+2. yyGermination.py：API主程式
+  - connect：資料庫互動模組
+    * 引用參數：```connect(ip, port, username, password, database)```
+    * ```connect_DB()```：連線資料庫並建立連線物件db, cursor，結束使用時請執行```db.close()```避免資源占用
+    * ```user_follow(line_id, user_name, right_id)```：寫入訂閱頻道的人員資訊與權限(預設=0[測試身分])
