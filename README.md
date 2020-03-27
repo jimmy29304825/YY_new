@@ -30,8 +30,9 @@
 
 
 ## 主程式介紹
-1. YY_app.ipynb：linebot運行主檔
-2. yyGermination.py：API主程式
+1. YY_app.ipynb：linebot運行主檔，前端操作與後端資料、設備串接的web server
+2. test.py：樹莓派運行程式檔，負責呼叫攝影機拍照、轉換圖像為byte格式後儲存至資料庫中
+3. yyGermination.py：API主程式
   - ```connect(ip, port, username, password, database)```：資料庫互動模組
     * ```connect_DB()```：連線資料庫並建立連線物件db, cursor，結束使用時請執行```db.close()```避免資源占用
     * ```user_follow(line_id, user_name, right_id)```：寫入訂閱頻道的人員資訊與權限(預設=0[測試身分])
