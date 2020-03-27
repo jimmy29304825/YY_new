@@ -1,10 +1,9 @@
 # YY_new
-## 需求套件：
-- opencv：偵測、調整影像用
-- numpy：計算發芽率等大量數據使用
-- matplotlib：繪圖呈現工具
-- imutils：成像梯形轉正套件
-- line-bot：lineBot不解釋
+## 專案重點：
+1. 樹梅派+相機模組
+2. 資料庫(MySQL 5.0)
+3. LineBot
+4. OpenCV
 
 ## 資料夾-germination
 1. 發芽率辨識主檔
