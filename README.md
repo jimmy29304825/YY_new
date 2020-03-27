@@ -23,8 +23,10 @@
 5. 各種json檔(for YY_app回覆訊息用)自行參閱
 
 ## 攝影機
-- 型號：Logitech 羅技 C525 HD 網路視訊攝影機 https://www.eclife.com.tw/SSD/moreinfo_46585.htm
+- (廢案)型號：Logitech 羅技 C525 HD 網路視訊攝影機 https://www.eclife.com.tw/SSD/moreinfo_46585.htm
 - 拍攝高度確認：55cm
+- raspiberry pi 3B+
+- raspberry camera module v2 8MP
 
 
 ## 主程式介紹
@@ -34,3 +36,7 @@
     * 引用參數：```connect(ip, port, username, password, database)```
     * ```connect_DB()```：連線資料庫並建立連線物件db, cursor，結束使用時請執行```db.close()```避免資源占用
     * ```user_follow(line_id, user_name, right_id)```：寫入訂閱頻道的人員資訊與權限(預設=0[測試身分])
+    * ```get_menu_id(line_id)```：取得指定用戶應綁定的圖文選單
+    * ```convert_image_to_byte(image)```：轉換要儲存至資料庫中的array.ndarray圖檔為byte格式
+    * ```get_series()```：取得所有資料庫的品種資料
+    * ```save_process(gerData)```：儲存操作主流程，資料型態為字典，```(gerData['process_id'], gerData['series_id'], gerData['seed_numbers'], gerData['identify_date'], gerData['saw_date'])```
