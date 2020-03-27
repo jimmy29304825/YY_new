@@ -39,4 +39,4 @@
     * ```get_menu_id(line_id)```：取得指定用戶應綁定的圖文選單
     * ```convert_image_to_byte(image)```：轉換要儲存至資料庫中的array.ndarray圖檔為byte格式
     * ```get_series()```：取得所有資料庫的品種資料
-    * ```save_process(gerData)```：儲存操作主流程，資料型態為字典，```(gerData['process_id'], gerData['series_id'], gerData['seed_numbers'], gerData['identify_date'], gerData['saw_date'])```
+    * ```save_process(gerData)```：儲存操作主流程，資料型態為字典，key包含```('process_id', 'series_id', 'seed_numbers', 'identify_date', 'saw_date')```
