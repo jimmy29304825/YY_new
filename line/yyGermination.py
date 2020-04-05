@@ -4,6 +4,8 @@ import numpy as np
 import paramiko
 from datetime import datetime
 from imutils.perspective import four_point_transform
+from scipy.stats import gaussian_kde
+import imutils
 
 class connect():
     def __init__(self, ip, port, username, password, database):
@@ -229,10 +231,80 @@ class germination():
         return germination_rate
     
     
-    def resize_photo(self, image):
-        
-        four_points = [[125, 815], [393, 1067], [694, 515], [958, 639]]
-        rect = four_point_transform(image, np.array(four_points))
+    def resize_photo(self, img):
+        img_blank = np.zeros((img.shape[0],img.shape[1],3), np.uint8)
+        img_blank.fill(255)
+        # 使用縮圖以減少計算量
+        img_small = imutils.resize(img, width=640)
+
+        # 轉換至 HSV 色彩空間
+        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        hsv_small = cv2.cvtColor(img_small, cv2.COLOR_BGR2HSV)
+
+        # 取出飽和度
+        saturation = hsv[:, :, 1]
+        saturation_small = hsv_small[:, :, 1]
+
+        # 取出明度
+        value = hsv[:,:,2]
+        value_small = hsv_small[:,:,2]
+
+        # 綜合飽和度與明度
+        sv_ratio = 0.5
+        sv_value = cv2.addWeighted(saturation, sv_ratio, value, 1-sv_ratio, 0)
+        sv_value_small = cv2.addWeighted(saturation_small, sv_ratio, value_small, 1-sv_ratio, 0)
+
+        # 使用 Kernel Density Estimator 計算出分佈函數
+        density = gaussian_kde(sv_value_small.ravel(), bw_method=0.2)
+
+        # 找出 PDF 中第一個區域最小值（Local Minimum）作為門檻值
+        step = 0.5
+        xs = np.arange(0, 256, step)
+        ys = density(xs)
+        cum = 0
+        threshold_value = 0
+        for i in range(1, 250):
+            cum += ys[i-1] * step
+            if (cum > 0.02) and (ys[i] < ys[i+1]) and (ys[i] < ys[i-1]):
+                threshold_value = xs[i]
+                break
+        # 以指定的門檻值篩選區域
+        _, threshold = cv2.threshold(sv_value, threshold_value, 255.0, cv2.THRESH_BINARY)
+
+        # 去除微小的雜訊
+        kernel_radius = int(img.shape[1]/100)
+        kernel = np.ones((kernel_radius, kernel_radius), np.uint8)
+        threshold = cv2.morphologyEx(threshold, cv2.MORPH_OPEN, kernel)
+        threshold = cv2.morphologyEx(threshold, cv2.MORPH_CLOSE, kernel)
+
+        # 產生等高線
+        contours, hierarchy = cv2.findContours(threshold, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+        # 建立除錯用影像
+        img_debug = img.copy()
+
+        # 線條寬度
+        line_width = int(img.shape[1]/1000)
+
+        # 以藍色線條畫出所有的等高線
+        cv2.drawContours(img_debug, contours, -1, (255, 0, 0), line_width)
+        img_group = cv2.drawContours(img_blank, contours, -1, (255, 0, 0), line_width)
+
+        # 處理藍色邊框
+        # cv2.rectangle (img_group, Point(0, 0), Point(2729, 3921), Scalar(0, 255, 255), 2, 8, 0);
+        img_group = cv2.rectangle(img_group, (0, 0), (img.shape[1], img.shape[0]), (255, 255, 255), 20)
+
+        # 把邊緣圖像重新處理
+        edged = cv2.Canny(img_group, 50, 100)
+        edged = cv2.dilate(edged, None, iterations=1)
+        edged = cv2.erode(edged, None, iterations=1)
+
+        # 把邊緣圖像重新分層
+        contours, hierarchy = cv2.findContours(edged, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        cnt = contours[1]
+        approx = cv2.approxPolyDP(cnt, 30, True).tolist()
+        approx = [j for sub in approx for j in sub]
+        rect = four_point_transform(img, np.array(approx))
         image_convert = cv2.resize(rect,(100*self.xy[0], 100*self.xy[1]))
         return image_convert
     
@@ -240,21 +312,24 @@ class germination():
     def get_photo(self, image):  # 拍攝照片並轉換、計算、裁切
         self.result_list = []  # 重製結果暫存清單
         print('裁切照片')
-#         image_convert = self.resize_photo(image)
-        top = 0  # 最上面(+h)
-        left = 0  # 最左邊(+w)
-        plus = 100  # 長寬設定 100 * 100
-        for i in range(self.xy[1]):  # 等比例裁切每一株的照片
-            for j in range(self.xy[0]):
-                slice_img = image[top:top+plus, left:left+plus]
-                ans = self.convert_photo(slice_img)  # 使用convert_photo運算
-                result = [i, j, ans[0], ans[1], slice_img]  # 儲存單個結果
-                self.result_list.append(result)  # 彙整整片結果至暫存清單
-                left = left + plus
-            top = top +plus
-            left = 0  # 算完一列重製(like a打字機)
-        result = self.caculate()  # 使用caculate計算整片發芽率
-        return result
+        image_convert = self.resize_photo(image)
+        if len(image_convert) != 4:
+            return 'please retake photo'
+        else:
+            top = 0  # 最上面(+h)
+            left = 0  # 最左邊(+w)
+            plus = 100  # 長寬設定 100 * 100
+            for i in range(self.xy[1]):  # 等比例裁切每一株的照片
+                for j in range(self.xy[0]):
+                    slice_img = image_convert[top:top+plus, left:left+plus]
+                    ans = self.convert_photo(slice_img)  # 使用convert_photo運算
+                    result = [i, j, ans[0], ans[1], slice_img]  # 儲存單個結果
+                    self.result_list.append(result)  # 彙整整片結果至暫存清單
+                    left = left + plus
+                top = top +plus
+                left = 0  # 算完一列重製(like a打字機)
+            result = self.caculate()  # 使用caculate計算整片發芽率
+            return result
        
        
     def __str__(self):
